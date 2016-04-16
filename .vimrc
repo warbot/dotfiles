@@ -69,6 +69,8 @@ set laststatus=2 " always show last status
 set scrolloff=4 " keep 4 lines shown while scrolling
 set shiftround " when >> shift from 1 space to 2 instead of 3
 set nocompatible " disable compatibility with vi
+set rnu
+set showcmd
 
 " mapping 
 nmap 0 ^
@@ -86,19 +88,27 @@ map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
 map <C-t> <esc>:tabnew<CR>
 map <C-x> <C-w>c
+" nmap <C-Tab> gt
+nmap <Tab> <C-w><C-w>
+nnoremap <CR> o<Esc>
+nnoremap <S-K> r<CR><Esc>
+nnoremap <Esc>f gt
+nnoremap <Esc>b gT
 map <leader>o <S-o><ESC>
 map <leader>gg mmgg=G`mzz<ESC>
 map <Leader>rp viwpyiw
 vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+nmap <Leader>gd <esc>:Gdiff<CR>
+nmap <Leader>gs <esc>:Gstatus<CR>
 
 " RSpec.vim mappings
-let g:rspec_command = "!./bin/rspec -c {spec}"
+let g:rspec_command = "!spec -c -f n --drb {spec}"
 map <Leader>rs :call RunCurrentSpecFile()<CR>
 map <Leader>rn :call RunNearestSpec()<CR>
 map <Leader>rl :call RunLastSpec()<CR>
 map <Leader>ra :call RunAllSpecs()<CR>
 map <Leader>rk :w<CR>:!rake<CR>
-map <Leader>dt :vs<CR><C-w>l<CR>
+map <Leader>dt :vs<CR><C-w>l
 
 " Rust.vim mapping
 map <Leader>ct :!cargo test<CR>
@@ -114,12 +124,7 @@ command! Q q " alias :Q, :q
 command! Qall qall
 
 " tabs
-nnoremap <C-d> <esc>:tabfirst<cr>
-nnoremap <C-f> <esc>:tabn 2<cr>
-nnoremap <C-g> <esc>:tabn 3<cr>
-nnoremap <C-h> <esc>:tabn 4<cr>
-nnoremap <C-j> <esc>:tabn 5<cr>
-nnoremap <C-k> <esc>:tabn 6<cr>
+nnoremap <C-f> <esc>:tabfirst<cr>
 nnoremap <C-l> <esc>:tablast<cr>
 
 " copy/paste buffer
@@ -128,7 +133,7 @@ map <leader>cw viw"+y
 map <leader>dw viw"+ydiw
 
 " Disable K looking stuff up
-map K <Nop>
+map K i<cr><esc>
 
 " Borrowed form r00k
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -144,6 +149,9 @@ function! RenameFile()
   endif
 endfunction
 map <Leader>n :call RenameFile()<cr>
+
+" Remove file
+nmap <Leader>rm :call delete(expand('%'))
 
 " Make CtrlP use ag for listing the files. Way faster and no useless files.
 let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
