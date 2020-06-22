@@ -41,6 +41,7 @@ alias qm="cd $HOME/git/queued-messages-relay"
 alias ds="cd $HOME/git/directory-service"
 alias en="cd $HOME/git/core-api-mapping-engine"
 alias whereami="git rev-parse --abbrev-ref HEAD"
+alias gg="git pull"
 
 # path
 alias bastion="ssh bastionhostnonprod.onlgn.net -p 23222"
