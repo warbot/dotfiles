@@ -147,3 +147,5 @@ alias dbeu="pgcli -h prod-db-master-admin-01.euc1.onlgn.net -U rtomkiv -d onelog
 alias dbusbi="pgcli -h bidb.usw2.onlgn.net -U rtomkiv -d onelogin_production"
 alias dbeubi="pgcli -h bidb02.euc1.onlgn.net -U rtomkiv -d onelogin_production_eu"
 alias ike="$IKE_HOME/ike.js"
+
+alias sync="source $HOME/dotfiles/sync.sh"
