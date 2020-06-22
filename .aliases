@@ -136,10 +136,6 @@ function rcp {
 alias ak="ssh-add ~/.ssh/gitmbp13"
 alias al="ssh-add ~/.ssh/git_mbp"
 
-alias dbus="pgcli -h prod-db-master-admin-01.usw2.onlgn.net -U rtomkiv -d onelogin_production"
-alias dbeu="pgcli -h prod-db-master-admin-01.euc1.onlgn.net -U rtomkiv -d onelogin_production_eu"
-alias dbusbi="pgcli -h bidb.usw2.onlgn.net -U rtomkiv -d onelogin_production"
-alias dbeubi="pgcli -h bidb02.euc1.onlgn.net -U rtomkiv -d onelogin_production_eu"
 alias ike="$ike_exe"
 
 alias sync="source $HOME/dotfiles/sync.sh"
