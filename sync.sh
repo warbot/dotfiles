@@ -5,7 +5,7 @@ git pull origin main;
 function syncDotfile() {
 	unison ~/dotfiles ~/\
 		 -ignore "Path {?*,.?*}"\
-		 -ignorenot "Name {.agignore,.aliases,.gitconfig,.vimrc,.zshrc}"\
+		 -ignorenot "Name {.agignore,.aliases,.gitconfig,.vimrc,.vim,.zshrc}"\
      -batch
 
   source ~/.zshrc;
