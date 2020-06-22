@@ -30,7 +30,8 @@
 # alias
 # https://stackoverflow.com/questions/3446320/in-vim-how-to-map-save-to-ctrl-s
 alias vim="stty -ixon && vim -v"
-alias vzshrc="vim ~/.aliases"
+alias valiases="vim ~/.aliases"
+alias vzshrc="vim ~/.zshrc"
 alias szshrc="source ~/.zshrc"
 alias iek="ike"
 alias gith="cd $HOME/git"
