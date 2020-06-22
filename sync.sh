@@ -1,6 +1,6 @@
 cd "$(dirname "${BASH_SOURCE}")";
 
-git pull origin main;
+git pull origin master
 
 function syncDotfile() {
 	unison ~/dotfiles ~/\
@@ -8,7 +8,7 @@ function syncDotfile() {
 		 -ignorenot "Name {.agignore,.aliases,.gitconfig,.vimrc,.vim,.zshrc}"\
      -batch
 
-  source ~/.zshrc;
+  source ~/.zshrc
 }
 
 # if [ "$1" == "--force" -o "$1" == "-f" ]; then
@@ -21,6 +21,6 @@ function syncDotfile() {
 # 	fi;
 # fi;
 
-syncDotfile;
-unset syncDotfile;
+syncDotfile
+unset syncDotfile
 
