@@ -159,6 +159,4 @@ map <C-F>       :FZF<CR>
 nnoremap <leader>l "0p
 nnoremap <leader>fh $v%lohc<CR><CR><Up><C-r>"<Esc>:s/,/,\r/g<CR>:'[,']norm ==<CR>
 
-nnoremap <leader>rt :tabnew scp://rtomkiv@api01.use1.shadow01.onlgn.net/
-
 autocmd BufWritePre * %s/\s\+$//e

@@ -28,43 +28,24 @@
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # alias
+# https://stackoverflow.com/questions/3446320/in-vim-how-to-map-save-to-ctrl-s
+alias vim="stty -ixon && vim -v"
+alias valiases="vim ~/.aliases"
 alias vzshrc="vim ~/.zshrc"
 alias szshrc="source ~/.zshrc"
-alias iek="ike"
 alias gith="cd $HOME/git"
 alias infr="gith && cd docker/infrakit"
-alias dike="cd $HOME/git/docker; echo Branch: ; git branch | grep \* | cut -d ' ' -f2; cd -; $HOME/git/docker/ike/ike.js"
 alias mr="cd $HOME/git/onelogin.com"
 alias cr="cd $HOME/git/core-api"
 alias qm="cd $HOME/git/queued-messages-relay"
 alias ds="cd $HOME/git/directory-service"
 alias en="cd $HOME/git/core-api-mapping-engine"
+alias whereami="git rev-parse --abbrev-ref HEAD"
 alias gg="git pull"
-alias vim="mvim -v"
 
 # path
-export PATH=/usr/local/share/npm/bin:$PATH
-export PATH=$HOME/.node/bin:$PATH
-export PATH=/Applications/MacVim.app/Contents/bin:$PATH
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH="$HOME/Downloads/platform-tools:$PATH"
-
-# https://stackoverflow.com/questions/3446320/in-vim-how-to-map-save-to-ctrl-s
-stty -ixon
-
-alias rmldp="rm -rf vendor/bundle/specifications/ruby-ldap-*; rm -rf vendor/bundle/cache/ruby-ldap-*; rm -rf vendor/bundle/gems/ruby-ldap-*"
-
 alias bastion="ssh bastionhostnonprod.onlgn.net -p 23222"
 alias shcons="ssh api01.use1.shadow01.onlgn.net -t 'sudo -i -u deploy bash -c \"cd /srv/onelogin_new/current && bundle exec script/console shadow\"'"
-
-# Rails
-alias b="bundle"
-alias s="spring rspec"
-alias r="rubocop"
-alias be="bundle exec"
-# alias cons="bin/console"
-alias server="bin/server"
-alias bgwk="bin/worker"
 
 # Ag
 alias agls="ag -l --hidden -g "
@@ -72,6 +53,8 @@ find_and_replace_with_ag() {
   ag -l "$1" | xargs sed -i '' -e "s/$1/$2/g"
 }
 alias agrp=find_and_replace_with_ag
+
+# IKE
 alias ikeupdate="npm install -g @onelogin/infrakit"
 alias cpwd="pwd | pbcopy"
 alias whereami="git rev-parse --abbrev-ref HEAD"
@@ -150,15 +133,10 @@ function rcp {
   sh -i -c $cmd
 }
 
-# alias python=/usr/local/Cellar/python/3.7.3/bin/python3
 
-# alias d2="cd ~/.wine_d2/drive_c/Program\ Files/diablo\ ii/mod\ plugy && WINEPREFIX=~/.wine_d2 wine plugy.exe -w -3dfx -nofixaspect -direct -txt"
-alias d2="cd ~/.wine_d2/drive_c/Program\ Files/diablo\ ii/mod\ plugy && WINEPREFIX=~/.wine_d2 wine plugy.exe -3dfx -txt"
 alias ak="ssh-add ~/.ssh/gitmbp13"
 alias al="ssh-add ~/.ssh/git_mbp"
 
-alias dbus="pgcli -h prod-db-master-admin-01.usw2.onlgn.net -U rtomkiv -d onelogin_production"
-alias dbeu="pgcli -h prod-db-master-admin-01.euc1.onlgn.net -U rtomkiv -d onelogin_production_eu"
-alias dbusbi="pgcli -h bidb.usw2.onlgn.net -U rtomkiv -d onelogin_production"
-alias dbeubi="pgcli -h bidb02.euc1.onlgn.net -U rtomkiv -d onelogin_production_eu"
-alias ike="$IKE_HOME/ike.js"
+alias ike="$ike_exe"
+
+alias sync="source $HOME/dotfiles/sync.sh"

@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/Users/vox/dotfiles/.vim'
+let g:netrw_dirhist_4='/Users/vox'
+let g:netrw_dirhist_3='/Users/vox/dotfiles'
+let g:netrw_dirhist_2='/Users/vox'
+let g:netrw_dirhist_1='/Users/vox/dotfiles'
+let g:netrw_dirhist_0='/Users/vox'
+let g:netrw_dirhist_9='/Users/vox/dotfiles'
+let g:netrw_dirhist_8='/Users/vox'
+let g:netrw_dirhist_7='/Users/vox/dotfiles'
+let g:netrw_dirhist_6='/Users/vox'
