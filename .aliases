@@ -74,6 +74,7 @@ find_and_replace_with_ag() {
 alias agrp=find_and_replace_with_ag
 alias ikeupdate="npm install -g @onelogin/infrakit"
 alias cpwd="pwd | pbcopy"
+alias whereami="git rev-parse --abbrev-ref HEAD"
 
 function ike_current_project {
   ike_run_path=`basename "$PWD"`
@@ -86,50 +87,61 @@ function ike_current_project {
 }
 
 export IKE_HOME="$HOME/git/docker/ike"
+export IKE_EXE="$IKE_HOME/ike.js"
 
+function ike_exec_cmd {
+  [[ "$IKE_BRANCH" = "" ]] && tag="--tag $(whereami)" || tag="--tag $IKE_BRANCH"
+  [[ "$IKE_ENV" = "" ]] && ike_env="-e dev" || ike_env="-e $IKE_ENV"
+
+  args="--dev $tag $ike_env"
+
+  cmd="$IKE_EXE run $(ike_current_project) $args '${@:1}'"
+  echo $cmd
+  sh -i -c $cmd
+}
 function cons {
   if [[ -f "script/console" ]]; then
-    cons_cmd="script/console"
+    cmd="bundle exec script/console"
   elif [[ -f "bin/console" ]]; then
-    cons_cmd="bin/console"
+    cmd="bundle exec bin/console"
   else
-    cons_cmd="rails c"
+    cmd="rails c"
   fi
 
-  cmd="ike run $(ike_current_project) --dev 'bundle exec $cons_cmd'"
-  echo $cmd
-  sh -c $cmd
+  ike_exec_cmd $cmd
 }
 
 function spec {
   if [[ -f "bin/rspec" ]]; then
-    spec_cmd="bin/rspec"
+    cmd="bundle exec bin/rspec $1"
   elif [[ -f "script/spec" ]]; then
-    spec_cmd="script/spec"
+    cmd="bundle exec script/spec $1"
   else
-    spec_cmd="rspec"
+    cmd="rspec"
   fi
-  cmd="ike run $(ike_current_project) --dev 'bundle exec $spec_cmd ${@:1}'"
-  echo $cmd
-  sh -c $cmd
+
+  IKE_ENV="test"
+  ike_exec_cmd $cmd
+  IKE_ENV=""
 }
 
 function run {
-  cmd="$IKE_HOME/ike.js run $(ike_current_project) --dev '${@:1}'"
-  echo $cmd
-  sh -i -c $cmd
+  ike_exec_cmd "${@:1}"
 }
 
 function enter {
-  cmd="$IKE_HOME/ike.js run $(ike_current_project) --dev '/bin/bash'"
-  echo $cmd
-  sh -i -c $cmd
+  ike_exec_cmd "/bin/bash"
 }
 
 function logs {
   cmd="$IKE_HOME/ike.js logs -f $(ike_current_project)"
   echo $cmd
   sh -i -c $cmd
+}
+
+function conf {
+  gopwd="$IKE_HOME/../infrakit/ol/$(ike_current_project)"
+  cd $gopwd
 }
 
 function rcp {
