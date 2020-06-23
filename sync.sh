@@ -2,6 +2,14 @@ cd "$(dirname "${BASH_SOURCE}")";
 
 git pull origin master
 
+function checkSyncTool() {
+  if ! [ -x "$(command -v unison)" ]; then
+    echo 'Sync tool `unison` is missing. Installing with brew'
+    echo 'brew install unison'
+    brew install unison
+  fi
+}
+
 function syncDotfile() {
 	unison ~/dotfiles ~/\
 		 -ignore "Path {?*,.?*}"\
@@ -21,6 +29,8 @@ function syncDotfile() {
 # 	fi;
 # fi;
 
+checkSyncTool
 syncDotfile
+unset checkSyncTool
 unset syncDotfile
 
