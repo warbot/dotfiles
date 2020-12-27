@@ -20,3 +20,6 @@ $(brew --prefix)/opt/fzf/install
 brew install the_silver_searcher # ag
 brew install unison # file sync
 brew install wget
+
+brew install httpie
+brew install autojump
