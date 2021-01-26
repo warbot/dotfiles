@@ -34,7 +34,7 @@ alias valiases="vim ~/.aliases"
 alias vzshrc="vim ~/.zshrc"
 alias szshrc="source ~/.zshrc"
 alias gith="cd $HOME/git"
-alias infr="gith && cd docker/infrakit"
+alias infr="gith && cd onelogin/docker/infrakit"
 alias mr="cd $HOME/git/onelogin.com"
 alias cr="cd $HOME/git/core-api"
 alias qm="cd $HOME/git/queued-messages-relay"
@@ -59,73 +59,150 @@ alias ikeupdate="npm install -g @onelogin/infrakit"
 alias cpwd="pwd | pbcopy"
 alias whereami="git rev-parse --abbrev-ref HEAD"
 
-function ike_current_project {
-  ike_run_path=`basename "$PWD"`
-  if [[ $ike_run_path == "onelogin.com" ]]; then
-    ike_run_path='monorail-admin'
-  elif [[ $ike_run_path == "onelogin-provisioning" ]]; then
-    ike_run_path='provisioning-worker'
+function docker_compose_current_project {
+  dc_run_path=`basename "$PWD"`
+  if [[ $dc_run_path == "webapp" ]]; then
+    dc_run_path='web'
   fi
-  echo $ike_run_path
+  echo $dc_run_path
 }
 
-export IKE_HOME="$HOME/git/docker/ike"
-export IKE_EXE="$IKE_HOME/ike.js"
+function docker_compose_exec_cmd {
+  dc_args="--rm"
 
-function ike_exec_cmd {
-  [[ "$IKE_BRANCH" = "" ]] && tag="--tag $(whereami)" || tag="--tag $IKE_BRANCH"
-  [[ "$IKE_ENV" = "" ]] && ike_env="-e dev" || ike_env="-e $IKE_ENV"
-
-  args="--dev $tag $ike_env"
-
-  cmd="$IKE_EXE run $(ike_current_project) $args '${@:1}'"
+  cmd="docker-compose run $dc_args $(docker_compose_current_project) ${@:1}"
   echo $cmd
   sh -i -c $cmd
-}
-function cons {
-  if [[ -f "script/console" ]]; then
-    cmd="bundle exec script/console"
-  elif [[ -f "bin/console" ]]; then
-    cmd="bundle exec bin/console"
-  else
-    cmd="rails c"
-  fi
-
-  ike_exec_cmd $cmd
 }
 
 function spec {
   if [[ -f "bin/rspec" ]]; then
     cmd="bundle exec bin/rspec $1"
-  elif [[ -f "script/spec" ]]; then
-    cmd="bundle exec script/spec $1"
   else
-    cmd="rspec"
+    cmd="bundle exec rspec $1"
   fi
 
-  IKE_ENV="test"
-  ike_exec_cmd $cmd
-  IKE_ENV=""
+  docker_compose_exec_cmd $cmd
+}
+
+function cons {
+  if [[ -f "bin/console" ]]; then
+    cmd="bundle exec bin/console"
+  else
+    cmd="bundle exec rails c"
+  fi
+
+  docker_compose_exec_cmd $cmd
 }
 
 function run {
-  ike_exec_cmd "${@:1}"
+  docker_compose_exec_cmd "${@:1}"
 }
 
 function enter {
-  ike_exec_cmd "/bin/bash"
+  docker_compose_exec_cmd "/bin/bash"
 }
 
 function logs {
-  cmd="$IKE_HOME/ike.js logs -f $(ike_current_project)"
+  cmd="docker-compose logs -ft --tail=40"
   echo $cmd
   sh -i -c $cmd
 }
 
-function conf {
-  gopwd="$IKE_HOME/../infrakit/ol/$(ike_current_project)"
-  cd $gopwd
+function attach {
+  list_containers="$(docker-compose ps -q $(docker_compose_current_project))"
+  trg_container="$(docker-compose ps -q $(docker_compose_current_project) | head -n 1)"
+  echo Currently running containers
+  echo $list_containers
+  echo Attaching to 1st: $trg_container
+  echo To exit press: Ctrl+P, Ctrl+Q
+  cmd="docker attach $trg_container"
+  echo $cmd
+  sh -i -c $cmd
 }
+
+# export IKE_HOME="$HOME/git/onelogin/docker/ike"
+# export IKE_EXE="$IKE_HOME/ike.js"
+
+# function ike_current_project {
+#   ike_run_path=`basename "$PWD"`
+#   if [[ $ike_run_path == "onelogin.com" ]]; then
+#     ike_run_path='monorail-admin'
+#   elif [[ $ike_run_path == "onelogin-provisioning" ]]; then
+#     ike_run_path='provisioning-worker'
+#   fi
+#   echo $ike_run_path
+# }
+
+# function ike_exec_cmd {
+#   [[ "$IKE_BRANCH" = "" ]] && tag="--tag $(whereami)" || tag="--tag $IKE_BRANCH"
+#   [[ "$IKE_ENV" = "" ]] && ike_env="-e dev" || ike_env="-e $IKE_ENV"
+
+#   args="--dev $tag $ike_env"
+
+#   cmd="$IKE_EXE run $(ike_current_project) $args '${@:1}'"
+#   echo $cmd
+#   sh -i -c $cmd
+# }
+# function cons {
+#   if [[ -f "script/console" ]]; then
+#     cmd="bundle exec script/console"
+#   elif [[ -f "bin/console" ]]; then
+#     cmd="bundle exec bin/console"
+#   else
+#     cmd="rails c"
+#   fi
+
+#   ike_exec_cmd $cmd
+# }
+
+# function spec {
+#   if [[ -f "bin/rspec" ]]; then
+#     cmd="bundle exec bin/rspec $1"
+#   elif [[ -f "script/spec" ]]; then
+#     cmd="bundle exec script/spec $1"
+#   else
+#     cmd="rspec"
+#   fi
+
+#   IKE_ENV="test"
+#   ike_exec_cmd $cmd
+#   IKE_ENV=""
+# }
+
+# function run {
+#   ike_exec_cmd "${@:1}"
+# }
+
+# function rune {
+#   local arg env
+#   while getopts 'e:' arg
+#   do
+#     case ${arg} in
+#       e) env=${OPTARG};;
+#       *) return 1 # illegal option
+#     esac
+#   done
+
+#   IKE_ENV="$env"
+#   ike_exec_cmd "${@:2}"
+#   IKE_ENV=""
+# }
+
+# function enter {
+#   ike_exec_cmd "/bin/bash"
+# }
+
+# function logs {
+#   cmd="$IKE_HOME/ike.js logs -f $(ike_current_project)"
+#   echo $cmd
+#   sh -i -c $cmd
+# }
+
+# function conf {
+#   gopwd="$IKE_HOME/../infrakit/ol/$(ike_current_project)"
+#   cd $gopwd
+# }
 
 function rcp {
   cmd="ditto $1 /Users/romantomkiv/git/core-api-mapping-engine/$1"
@@ -137,6 +214,22 @@ function rcp {
 alias ak="ssh-add ~/.ssh/gitmbp13"
 alias al="ssh-add ~/.ssh/git_mbp"
 
-alias ike="$ike_exe"
+alias ike="$IKE_EXE"
 
 alias sync="source $HOME/dotfiles/sync.sh"
+
+# golang
+# docker run with mount inline
+function dgolang {
+  set -v
+  docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app golang "${@:1}"
+  set +v
+}
+
+alias cdch="cd ~/Challenges"
+alias dirb="docker run --rm -it ruby irb"
+
+# Brokerkit
+BROKERKIT_HOME="$HOME/git/brokerkit"
+alias api="cd $BROKERKIT_HOME/api"
+alias web="cd $BROKERKIT_HOME/webapp"

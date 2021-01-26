@@ -17,6 +17,10 @@ set expandtab
 set noswapfile
 set splitright
 set hlsearch
+set ignorecase
+set smartcase
+" https://github.com/morhetz/gruvbox/wiki/Terminal-specific#0-recommended-neovimvim-true-color-support
+" set termguicolors
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 " call vundle#begin('~/some/path/here')
@@ -28,10 +32,14 @@ call vundle#begin()
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-repeat'
+" Plugin 'tpope/vim-dispatch'
+Plugin 'vim-ruby/vim-ruby'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'morhetz/gruvbox'
@@ -57,6 +65,7 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+set bg=dark
 colorscheme gruvbox
 
 imap kj <Esc>
@@ -84,17 +93,17 @@ nmap <Leader>gs <esc>:Gstatus<CR>
 nmap <Leader>gr :Gread<CR>
 nmap <Leader>ga :Gwrite<CR>
 nmap <Leader>gb <esc>:Gblame<CR>
+nmap <Leader>gl <esc>:Glog -- %<CR>
 nmap <Leader>q :qall<CR>
-nnoremap <C-h> gT
-nnoremap <C-l> gt
+nnoremap <C-j> gT
+nnoremap <C-k> gt
 map <leader>gg mmgg=G`mzz<ESC>
 map <Leader>rp viwpyiw
-map <Leader>ch :chdir %<CR>
-map <Leader>cr :Ex $HOME/git/core-api<CR>
-map <Leader>mr :Ex $HOME/git/onelogin.com<CR>
-map <Leader>ds :Ex $HOME/git/directory-service<CR>
-map <Leader>pv :Ex $HOME/git/onelogin-provisioning<CR>
-map <Leader>c :Ex $HOME/Challenges<CR>
+" map <Leader>ch :chdir %<CR>
+" map <Leader>cr :Ex $HOME/git/core-api<CR>
+" map <Leader>mr :Ex $HOME/git/onelogin.com<CR>
+" map <Leader>ds :Ex $HOME/git/directory-service<CR>
+" map <Leader>pv :Ex $HOME/git/onelogin-provisioning<CR>
 nmap <Leader>cp :let @+ = expand("%")<CR>
 nmap <Leader>cl :let @+ = expand("%") . ":" . line(".")<CR>
 nmap <Leader>sl :let @+ = "spec " . expand("%") . ":" . line(".")<CR>
@@ -160,3 +169,6 @@ nnoremap <leader>l "0p
 nnoremap <leader>fh $v%lohc<CR><CR><Up><C-r>"<Esc>:s/,/,\r/g<CR>:'[,']norm ==<CR>
 
 autocmd BufWritePre * %s/\s\+$//e
+
+" https://vi.stackexchange.com/questions/184/how-can-i-clear-word-highlighting-in-the-current-document-e-g-such-as-after-se
+nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
