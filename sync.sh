@@ -16,7 +16,7 @@ function syncDotfile() {
 		 -ignorenot "Name {.agignore,.aliases,.gitconfig,.vimrc,.vim,.zshrc,.aliases,.tmux.conf}"\
      -batch
 
-  source ~/.zshrc
+  # source ~/.zshrc
 }
 
 # if [ "$1" == "--force" -o "$1" == "-f" ]; then
