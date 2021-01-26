@@ -13,7 +13,7 @@ function checkSyncTool() {
 function syncDotfile() {
 	unison ~/dotfiles ~/\
 		 -ignore "Path {?*,.?*}"\
-		 -ignorenot "Name {.agignore,.aliases,.gitconfig,.vimrc,.vim,.zshrc,.aliases}"\
+		 -ignorenot "Name {.agignore,.aliases,.gitconfig,.vimrc,.vim,.zshrc,.aliases,.tmux.conf}"\
      -batch
 
   source ~/.zshrc
