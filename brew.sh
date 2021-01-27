@@ -23,3 +23,4 @@ brew install wget
 
 brew install httpie
 brew install autojump
+brew install neovim --HEAD

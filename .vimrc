@@ -3,10 +3,11 @@ filetype off                  " required
 syntax on
 
 " set the runtime path to include Vundle and initialize
-set re=1 " https://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
-set synmaxcol=256
-set ttyfast
+" set re=1 " https://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
+" set synmaxcol=256
 set lazyredraw          " Wait to redraw
+set ttyfast
+set cul!
 set rtp+=~/.vim/bundle/Vundle.vim
 set rtp+=/usr/local/opt/fzf
 set nu rnu
@@ -47,14 +48,19 @@ Plugin 'tpope/vim-repeat'
 " Plugin 'tpope/vim-dispatch'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'ctrlpvim/ctrlp.vim'
+" Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'vim-airline/vim-airline'
 Plugin 'morhetz/gruvbox'
 Plugin 'mileszs/ack.vim'
-Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'junegunn/fzf'
 " Plugin 'AndrewRadev/switch.vim'
 " Plugin 'zxqfl/tabnine-vim'
-
+" https://github.com/nvim-treesitter/nvim-treesitter#quickstart
+" To install :TSInstall {language}
+" To update all parsers unconditionally, use :TSUpdate all or just :TSUpdate
+if has('nvim')
+  Plugin 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+endif
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -82,13 +88,13 @@ map  <Esc>:w<CR>
 let mapleader = "\<Space>"
 
 
-map <leader>vi :tabe $MYVIMRC<cr>
+map <leader>vi :tabe $MYVIMRC<CR> :sp ~/.vimrc<CR>
 map <leader>gi :tabnew ~/.gitconfig<cr>
 map <leader>so :source $MYVIMRC<cr>
 " Note that remapping C-s requires flow control to be disabled
 " (e.g. in .bashrc or .zshrc)
 map <C-s> <esc>:w<CR>
-imap <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR> :nohlsearch<CR>
 map <C-t> <esc>:tabnew
 map <C-x> <C-w>c
 nnoremap <Leader>dt :vs<CR><C-w>l
@@ -164,15 +170,15 @@ let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 " let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+" let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 nnoremap ® viw<Esc>:%s/\<<c-r>=expand("<cword>")<cr>\>//g<left><left>
 nnoremap ^[r viw<Esc>:%s/\<<c-r>=expand("<cword>")<cr>\>//g<left><left>
 " map <C-V>       "+gP
-map <C-F>       :FZF<CR>
-nnoremap <leader>l "0p
-nnoremap <leader>fh $v%lohc<CR><CR><Up><C-r>"<Esc>:s/,/,\r/g<CR>:'[,']norm ==<CR>
+" map <C-F>       :FZF<CR>
+" nnoremap <leader>l "0p
+" nnoremap <leader>fh $v%lohc<CR><CR><Up><C-r>"<Esc>:s/,/,\r/g<CR>:'[,']norm ==<CR>
 
 autocmd BufWritePre * %s/\s\+$//e
 
