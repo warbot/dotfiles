@@ -52,6 +52,7 @@ Plugin 'vim-ruby/vim-ruby'
 " Plugin 'vim-airline/vim-airline'
 Plugin 'morhetz/gruvbox'
 Plugin 'mileszs/ack.vim'
+" type TabNine::version then TabNine::sem
 Plugin 'zxqfl/tabnine-vim'
 Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -90,8 +91,8 @@ imap jk <Esc>
 let mapleader = "\<Space>"
 
 map <leader>vi :tabe $MYVIMRC<CR> :sp ~/.vimrc<CR>
-map <leader>gi :tabnew ~/.gitconfig<cr>
-map <leader>so :source $MYVIMRC<cr>
+map <leader>so :source $MYVIMRC<CR>
+map <leader>gi :tabnew ~/.gitconfig<CR>
 " Note that remapping C-s requires flow control to be disabled
 " (e.g. in .bashrc or .zshrc)
 map  <Esc>:w<CR>
