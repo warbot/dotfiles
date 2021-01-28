@@ -44,6 +44,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-endwise'
 " Plugin 'tpope/vim-dispatch'
 Plugin 'vim-ruby/vim-ruby'
 " Plugin 'ctrlpvim/ctrlp.vim'
@@ -51,6 +52,7 @@ Plugin 'vim-ruby/vim-ruby'
 " Plugin 'vim-airline/vim-airline'
 Plugin 'morhetz/gruvbox'
 Plugin 'mileszs/ack.vim'
+Plugin 'zxqfl/tabnine-vim'
 Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
@@ -84,18 +86,17 @@ colorscheme gruvbox
 imap kj <Esc>
 imap jk <Esc>
 
-map  <Esc>:w<CR>
 
 let mapleader = "\<Space>"
-
 
 map <leader>vi :tabe $MYVIMRC<CR> :sp ~/.vimrc<CR>
 map <leader>gi :tabnew ~/.gitconfig<cr>
 map <leader>so :source $MYVIMRC<cr>
 " Note that remapping C-s requires flow control to be disabled
 " (e.g. in .bashrc or .zshrc)
-map <C-s> <esc>:w<CR>
-imap <C-s> <esc>:w<CR> :nohlsearch<CR>
+map  <Esc>:w<CR>
+map <C-s> <esc>:w<CR>:nohlsearch<CR>
+imap <C-s> <esc>:w<CR>:nohlsearch<CR>
 map <C-t> <esc>:tabnew
 map <C-x> <C-w>c
 nnoremap <Leader>dt :vs<CR><C-w>l
@@ -105,6 +106,8 @@ nnoremap <C-f> :Rg<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-c> :Commits<CR>
 nnoremap <C-h> :History<CR>
+nnoremap <silent> <C-j> gT
+nnoremap <silent> <C-k> gt
 nmap <Leader>gd <esc>:Gdiff<CR>
 nmap <Leader>gs <esc>:Gstatus<CR>
 nmap <Leader>gr :Gread<CR>
@@ -112,8 +115,6 @@ nmap <Leader>ga :Gwrite<CR>
 nmap <Leader>gb <esc>:Gblame<CR>
 nmap <Leader>gl <esc>:Glog -- %<CR>
 nmap <Leader>q :qall<CR>
-nnoremap <C-j> gT
-nnoremap <C-k> gt
 map <leader>gg mmgg=G`mzz<ESC>
 map <Leader>rp viwpyiw
 " map <Leader>ch :chdir %<CR>
@@ -123,6 +124,7 @@ map <Leader>rp viwpyiw
 " map <Leader>pv :Ex $HOME/git/onelogin-provisioning<CR>
 nmap <Leader>cp :let @+ = expand("%")<CR>
 nmap <Leader>cl :let @+ = expand("%") . ":" . line(".")<CR>
+nmap <Leader>sp :let @+ = "spec " . expand("%")<CR>
 nmap <Leader>sl :let @+ = "spec " . expand("%") . ":" . line(".")<CR>
 nmap <Leader>vl :let @+ = "vim +" . line(".") . " " . expand("%")<CR>
 nnoremap <leader>ee :Exp<CR>
