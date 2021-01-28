@@ -8,8 +8,6 @@ syntax on
 set lazyredraw          " Wait to redraw
 set ttyfast
 set cul!
-set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=/usr/local/opt/fzf
 set nu rnu
 set showcmd
 set ts=2 sts=2 noet
@@ -28,12 +26,13 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 " call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-" Plugin 'VundleVim/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -47,12 +46,14 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-repeat'
 " Plugin 'tpope/vim-dispatch'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'ctrlpvim/ctrlp.vim'
+" Plugin 'ctrlpvim/ctrlp.vim'
 " Plugin 'FelikZ/ctrlp-py-matcher'
-Plugin 'vim-airline/vim-airline'
+" Plugin 'vim-airline/vim-airline'
 Plugin 'morhetz/gruvbox'
 Plugin 'mileszs/ack.vim'
-Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
 " Plugin 'AndrewRadev/switch.vim'
 " Plugin 'zxqfl/tabnine-vim'
 " https://github.com/nvim-treesitter/nvim-treesitter#quickstart
@@ -100,6 +101,10 @@ map <C-x> <C-w>c
 nnoremap <Leader>dt :vs<CR><C-w>l
 nmap <Tab> <C-w><C-w>
 nnoremap <C-e> <C-i>
+nnoremap <C-f> :Rg<CR>
+nnoremap <C-p> :Files<CR>
+nnoremap <C-c> :Commits<CR>
+nnoremap <C-h> :History<CR>
 nmap <Leader>gd <esc>:Gdiff<CR>
 nmap <Leader>gs <esc>:Gstatus<CR>
 nmap <Leader>gr :Gread<CR>
@@ -159,24 +164,25 @@ endfunction
 " command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 " nnoremap \ :Ag<SPACE>
 
+" https://stackoverflow.com/questions/63905992/open-fzf-vim-in-split-instead-of-floating-window
+let g:fzf_layout = { 'down': '~40%' }
 " https://github.com/mileszs/ack.vim#can-i-use-ag-the-silver-searcher-with-this
 let g:ackprg = 'ag --vimgrep'
 nnoremap \ :Ack<SPACE><c-r>=expand("<cword>")<cr>
 
 " https://stackoverflow.com/questions/18285751/use-ag-in-ctrlp-vim
 " let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-" let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-" let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+" let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+" let g:ctrlp_match_window = 'bottom,order:ttb'
+" let g:ctrlp_switch_buffer = 0
+" let g:ctrlp_working_path_mode = 0
+" " let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" " let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 nnoremap ® viw<Esc>:%s/\<<c-r>=expand("<cword>")<cr>\>//g<left><left>
 nnoremap ^[r viw<Esc>:%s/\<<c-r>=expand("<cword>")<cr>\>//g<left><left>
 " map <C-V>       "+gP
-" map <C-F>       :FZF<CR>
 " nnoremap <leader>l "0p
 " nnoremap <leader>fh $v%lohc<CR><CR><Up><C-r>"<Esc>:s/,/,\r/g<CR>:'[,']norm ==<CR>
 

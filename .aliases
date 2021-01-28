@@ -33,6 +33,7 @@
 alias vim="nvim"
 alias valiases="vim ~/.aliases"
 alias vgit="vim ~/.gitconfig"
+alias vtmux="vim ~/.tmux.conf"
 alias vzshrc="vim ~/.zshrc"
 alias szshrc="source ~/.zshrc"
 alias gith="cd $HOME/git"
