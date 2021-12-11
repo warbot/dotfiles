@@ -1,0 +1,11 @@
+prettier.formatFile
+solargraph.buildGemDocs
+solargraph.downloadCore
+solargraph.environment
+solargraph.checkGemVersion
+eslint.executeAutofix
+extensions.forceUpdateAll
+workspace.renameCurrentFile
+solargraph.rebuildAllGemDocs
+solargraph.search
+eslint.showOutputChannel

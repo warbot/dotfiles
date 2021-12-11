@@ -1,0 +1,12 @@
+{
+  "solargraph.transport": "external",
+  "solargraph.externalServer": {
+    "host": "0.0.0.0",
+    "port": 7658
+  },
+  "solargraph.autoformat": true,
+  "solargraph.formatting": true,
+  "solargraph.diagnostics": true,
+  "solargraph.hover": true,
+  "solargraph.completion": true
+}

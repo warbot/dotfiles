@@ -28,6 +28,7 @@
   setu = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
   cp = cherry-pick
   summary = diff --stat
+	uncommit = reset HEAD^
 
 [merge]
   ; ff = only

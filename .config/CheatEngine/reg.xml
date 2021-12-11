@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<XMLReg>
+  <Key Name="HKEY_CURRENT_USER">
+    <Key Name="Software">
+      <Key Name="Cheat Engine">
+        <Value Name="Init" Type="2">123</Value>
+        <Value Name="First Time User" Type="1">0</Value>
+        <Value Name="Saved Stacksize" Type="1">4096</Value>
+        <Value Name="Show processlist in mainmenu" Type="1">0</Value>
+        <Value Name="Undo" Type="1">1</Value>
+        <Value Name="ScanThreadpriority" Type="1">4</Value>
+        <Value Name="Show all windows on taskbar" Type="1">0</Value>
+        <Value Name="AllByte" Type="1">0</Value>
+        <Value Name="AllWord" Type="1">0</Value>
+        <Value Name="AllDWord" Type="1">1</Value>
+        <Value Name="AllQWord" Type="1">0</Value>
+        <Value Name="AllFloat" Type="1">1</Value>
+        <Value Name="AllDouble" Type="1">1</Value>
+        <Value Name="AllCustom" Type="1">0</Value>
+        <Value Name="Can Step Kernelcode" Type="1">0</Value>
+        <Value Name="Buffersize" Type="1">4096</Value>
+        <Value Name="Center on popup" Type="1">1</Value>
+        <Value Name="Update interval" Type="1">500</Value>
+        <Value Name="Freeze interval" Type="1">100</Value>
+        <Value Name="Show values as signed" Type="1">0</Value>
+        <Value Name="Replace incomplete opcodes with NOPS" Type="1">1</Value>
+        <Value Name="Ask for replace with NOPS" Type="1">1</Value>
+        <Value Name="Use Anti-debugdetection" Type="1">0</Value>
+        <Value Name="Override existing bp's" Type="1">1</Value>
+        <Value Name="Handle unhandled breakpoints" Type="1">0</Value>
+        <Value Name="Fastscan on by default" Type="1">1</Value>
+        <Value Name="Hardware breakpoints" Type="1">1</Value>
+        <Value Name="Software breakpoints" Type="1">0</Value>
+        <Value Name="Exception breakpoints" Type="1">0</Value>
+        <Value Name="Update Foundaddress list" Type="1">0</Value>
+        <Value Name="Update Foundaddress list Interval" Type="1">500</Value>
+        <Value Name="Simple copy/paste" Type="1">0</Value>
+        <Value Name="AutoAttach" Type="2"/>
+        <Value Name="Always AutoAttach" Type="1">0</Value>
+        <Value Name="LuaScriptAction" Type="1">1</Value>
+        <Value Name="Save window positions" Type="1">1</Value>
+        <Value Name="Show main menu" Type="1">1</Value>
+        <Value Name="Get process icons" Type="1">1</Value>
+        <Value Name="Pointer appending" Type="1">0</Value>
+        <Value Name="skip PAGE_NOCACHE" Type="1">0</Value>
+        <Value Name="skip PAGE_WRITECOMBINE" Type="1">1</Value>
+        <Value Name="Pause when scanning on by default" Type="1">0</Value>
+        <Value Name="Repeat Delay" Type="1">0</Value>
+        <Value Name="Hide all windows" Type="1">1</Value>
+        <Value Name="Really hide all windows" Type="1">0</Value>
+        <Value Name="Do not hide 0" Type="2"/>
+        <Value Name="MEM_PRIVATE" Type="1">1</Value>
+        <Value Name="MEM_IMAGE" Type="1">1</Value>
+        <Value Name="MEM_MAPPED" Type="1">1</Value>
+        <Value Name="hotkey poll interval" Type="1">100</Value>
+        <Value Name="Time between hotkeypress" Type="1">100</Value>
+        <Value Name="Attach to foregroundprocess Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="Show Cheat Engine Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="Pause process Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="Toggle speedhack Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="Speedhack 1 speed" Type="2">1</Value>
+        <Value Name="Speedhack 1 disablewhenreleased" Type="1">0</Value>
+        <Value Name="Speedhack 2 speed" Type="2">1</Value>
+        <Value Name="Speedhack 2 disablewhenreleased" Type="1">0</Value>
+        <Value Name="Speedhack 3 speed" Type="2">1</Value>
+        <Value Name="Speedhack 3 disablewhenreleased" Type="1">0</Value>
+        <Value Name="Speedhack 4 speed" Type="2">1</Value>
+        <Value Name="Speedhack 4 disablewhenreleased" Type="1">0</Value>
+        <Value Name="Speedhack 5 speed" Type="2">1</Value>
+        <Value Name="Speedhack 5 disablewhenreleased" Type="1">0</Value>
+        <Value Name="Set Speedhack speed 1 Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="Set Speedhack speed 2 Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="Set Speedhack speed 3 Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="Set Speedhack speed 4 Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="Set Speedhack speed 5 Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="Increase Speedhack speed" Type="2">00000000000000000000</Value>
+        <Value Name="Increase Speedhack delta" Type="2">1</Value>
+        <Value Name="Decrease Speedhack speed" Type="2">00000000000000000000</Value>
+        <Value Name="Decrease Speedhack delta" Type="2">1</Value>
+        <Value Name="Binary Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="Byte Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="2 Bytes Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="4 Bytes Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="8 Bytes Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="Float Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="Double Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="Text Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="Array of Byte Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="New Scan Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="New Scan-Exact Value" Type="2">00000000000000000000</Value>
+        <Value Name="Unknown Initial Value Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="Next Scan-Exact Value" Type="2">00000000000000000000</Value>
+        <Value Name="Increased Value Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="Decreased Value Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="Changed Value Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="Unchanged Value Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="Same as first scan Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="Undo Last scan Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="Cancel scan Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="Debug-&gt;Run Hotkey" Type="2">00000000000000000000</Value>
+        <Value Name="Don't use tempdir" Type="1">0</Value>
+        <Value Name="Scanfolder" Type="2">/</Value>
+        <Value Name="Use dbk32 QueryMemoryRegionEx" Type="1">0</Value>
+        <Value Name="Use dbk32 ReadWriteProcessMemory" Type="1">0</Value>
+        <Value Name="Use dbk32 OpenProcess" Type="1">0</Value>
+        <Value Name="Use Processwatcher" Type="1">0</Value>
+        <Value Name="Use VEH Debugger" Type="1">0</Value>
+        <Value Name="VEH Real context on thread creation event" Type="1">1</Value>
+        <Value Name="Use Windows Debugger" Type="1">0</Value>
+        <Value Name="Use Kernel Debugger" Type="1">0</Value>
+        <Value Name="Use Global Debug Routines" Type="1">0</Value>
+        <Value Name="Wait After Gui Update" Type="1">0</Value>
+        <Value Name="Use TaskLevel debugger" Type="1">1</Value>
+        <Value Name="Unexpected Breakpoint Behaviour" Type="1">0</Value>
+        <Value Name="Add Allocated Memory As Watched" Type="1">0</Value>
+        <Value Name="Unrandomizer: default value" Type="1">0</Value>
+        <Value Name="Unrandomizer: incremental" Type="1">0</Value>
+        <Value Name="Show tools menu" Type="1">1</Value>
+        <Value Name="WriteLogging" Type="1">0</Value>
+        <Value Name="WriteLoggingSize" Type="1">250</Value>
+        <Value Name="Show Language MenuItem" Type="1">0</Value>
+        <Value Name="DPI Aware" Type="1">0</Value>
+        <Value Name="Override Default Font" Type="1">0</Value>
+        <Value Name="Never Change Protection" Type="1">0</Value>
+        <Value Name="Always Force Load" Type="1">0</Value>
+        <Value Name="Always Sign Table" Type="1">0</Value>
+        <Value Name="Always Ask For Password" Type="1">0</Value>
+        <Value Name="collectgarbage passive" Type="1">1</Value>
+        <Value Name="collectgarbage active" Type="1">1</Value>
+        <Value Name="collectgarbage timer" Type="1">60</Value>
+        <Value Name="collectgarbage only when bigger" Type="1">0</Value>
+        <Value Name="collectgarbage minsize" Type="1">200</Value>
+        <Value Name="use thread to freeze" Type="1">0</Value>
+        <Key Name="Tools"/>
+        <Key Name="Plugins64"/>
+        <Value Name="Initial tables dir" Type="2">/Users/vox/Documents/</Value>
+        <Value Name="Recent Files" Type="4">2F00550073006500720073002F0076006F0078002F0044006F00630075006D0065006E00740073002F006400770033002E004300540000002F0070007200690076006100740065002F007600610072002F0072006F006F0074002F0044006F00630075006D0065006E00740073002F006400770033002E0043005400</Value>
+        <Key Name="Window Positions 96">
+          <Value Name="ProcessWindow Position" Type="2">35030000B70300002201000096010000010000000000000000000000</Value>
+          <Value Name="Comments Position" Type="2">D5000000020400004F01000001010000</Value>
+          <Value Name="AdvancedOptions Position" Type="2">C3000000030100003B0200002F010000</Value>
+          <Value Name="formSettings Position" Type="2">190000000105000094020000B0020000</Value>
+          <Value Name="MemoryBrowser Position" Type="2">8D00000041010000C402000018020000500000008C000000C8000000640000006C010000D70000000100000001000000000000000000000000000000</Value>
+          <Value Name="MainForm Position" Type="2">190000004D020000940200006805000029000000F1000000870000004E000000102700008A0100007A000000</Value>
+          <Value Name="frmAutoInject Position" Type="2">BC010000DC010000AF0100003A010000</Value>
+          <Value Name="formAddressChange Position" Type="2">6C020000A4040000B8000000C5000000</Value>
+          <Value Name="frmLuaEngine Position" Type="2">27020000E30300003A0200003B01000083000000010000000100000001000000</Value>
+        </Key>
+        <Value Name="Debug" Type="1">0</Value>
+        <Key Name="Ignored Exceptions"/>
+        <Value Name="Last Rounding Type" Type="1">2</Value>
+      </Key>
+    </Key>
+    <Key Name="Cookies">
+      <Value Name="cheatengine.org" Type="4">5F005F006300660064007500690064003D006400320062003700310035003200630063003800340064003400370062006200390035003200660065003600340064006300390032006600350062006100620033003100360031003400350033003100360033003900</Value>
+    </Key>
+  </Key>
+</XMLReg>
