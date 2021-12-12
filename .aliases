@@ -28,27 +28,16 @@
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # alias
-# https://stackoverflow.com/questions/3446320/in-vim-how-to-map-save-to-ctrl-s
-# alias vim="stty -ixon && vim -v"
 alias vim="nvim"
 alias valiases="vim ~/.aliases"
 alias vgit="vim ~/.gitconfig"
 alias vtmux="vim ~/.tmux.conf"
 alias vzshrc="vim ~/.zshrc"
 alias szshrc="source ~/.zshrc"
-alias gith="cd $HOME/git"
-alias infr="gith && cd onelogin/docker/infrakit"
-alias mr="cd $HOME/git/onelogin.com"
-alias cr="cd $HOME/git/core-api"
-alias qm="cd $HOME/git/queued-messages-relay"
-alias ds="cd $HOME/git/directory-service"
-alias en="cd $HOME/git/core-api-mapping-engine"
 alias whereami="git rev-parse --abbrev-ref HEAD"
 alias gg="git pull"
-
-# path
-alias bastion="ssh bastionhostnonprod.onlgn.net -p 23222"
-alias shcons="ssh api01.use1.shadow01.onlgn.net -t 'sudo -i -u deploy bash -c \"cd /srv/onelogin_new/current && bundle exec script/console shadow\"'"
+alias cpwd="pwd | pbcopy"
+alias whereami="git rev-parse --abbrev-ref HEAD"
 
 # Ag
 alias agls="ag -l --hidden -g "
@@ -56,11 +45,6 @@ find_and_replace_with_ag() {
   ag -l "$1" | xargs sed -i '' -e "s/$1/$2/g"
 }
 alias agrp=find_and_replace_with_ag
-
-# IKE
-alias ikeupdate="npm install -g @onelogin/infrakit"
-alias cpwd="pwd | pbcopy"
-alias whereami="git rev-parse --abbrev-ref HEAD"
 
 function docker_compose_current_project {
   dc_run_path=`basename "$PWD"`
@@ -76,12 +60,6 @@ function docker_compose_exec_cmd {
   cmd="docker-compose run $dc_args $(docker_compose_current_project) ${@:1}"
   echo $cmd
   sh -i -c $cmd
-}
-
-function rubocop {
-  cmd="bundle exec rubocop ${@:1}"
-
-  docker_compose_exec_cmd $cmd
 }
 
 function spec {
@@ -137,101 +115,6 @@ function attach {
   sh -i -c $cmd
 }
 
-# export IKE_HOME="$HOME/git/onelogin/docker/ike"
-# export IKE_EXE="$IKE_HOME/ike.js"
-
-# function ike_current_project {
-#   ike_run_path=`basename "$PWD"`
-#   if [[ $ike_run_path == "onelogin.com" ]]; then
-#     ike_run_path='monorail-admin'
-#   elif [[ $ike_run_path == "onelogin-provisioning" ]]; then
-#     ike_run_path='provisioning-worker'
-#   fi
-#   echo $ike_run_path
-# }
-
-# function ike_exec_cmd {
-#   [[ "$IKE_BRANCH" = "" ]] && tag="--tag $(whereami)" || tag="--tag $IKE_BRANCH"
-#   [[ "$IKE_ENV" = "" ]] && ike_env="-e dev" || ike_env="-e $IKE_ENV"
-
-#   args="--dev $tag $ike_env"
-
-#   cmd="$IKE_EXE run $(ike_current_project) $args '${@:1}'"
-#   echo $cmd
-#   sh -i -c $cmd
-# }
-# function cons {
-#   if [[ -f "script/console" ]]; then
-#     cmd="bundle exec script/console"
-#   elif [[ -f "bin/console" ]]; then
-#     cmd="bundle exec bin/console"
-#   else
-#     cmd="rails c"
-#   fi
-
-#   ike_exec_cmd $cmd
-# }
-
-# function spec {
-#   if [[ -f "bin/rspec" ]]; then
-#     cmd="bundle exec bin/rspec $1"
-#   elif [[ -f "script/spec" ]]; then
-#     cmd="bundle exec script/spec $1"
-#   else
-#     cmd="rspec"
-#   fi
-
-#   IKE_ENV="test"
-#   ike_exec_cmd $cmd
-#   IKE_ENV=""
-# }
-
-# function run {
-#   ike_exec_cmd "${@:1}"
-# }
-
-# function rune {
-#   local arg env
-#   while getopts 'e:' arg
-#   do
-#     case ${arg} in
-#       e) env=${OPTARG};;
-#       *) return 1 # illegal option
-#     esac
-#   done
-
-#   IKE_ENV="$env"
-#   ike_exec_cmd "${@:2}"
-#   IKE_ENV=""
-# }
-
-# function enter {
-#   ike_exec_cmd "/bin/bash"
-# }
-
-# function logs {
-#   cmd="$IKE_HOME/ike.js logs -f $(ike_current_project)"
-#   echo $cmd
-#   sh -i -c $cmd
-# }
-
-# function conf {
-#   gopwd="$IKE_HOME/../infrakit/ol/$(ike_current_project)"
-#   cd $gopwd
-# }
-
-function rcp {
-  cmd="ditto $1 /Users/romantomkiv/git/core-api-mapping-engine/$1"
-  echo $cmd
-  sh -i -c $cmd
-}
-
-
-alias ak="ssh-add ~/.ssh/gitmbp13"
-alias al="ssh-add ~/.ssh/git_mbp"
-
-alias ike="$IKE_EXE"
-
 alias sync="source $HOME/dotfiles/sync.sh"
 
 # golang
@@ -241,13 +124,5 @@ function dgolang {
   docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app golang "${@:1}"
   set +v
 }
-
-alias cdch="cd ~/Challenges"
-alias dirb="docker run --rm -it ruby irb"
-
-# Brokerkit
-BROKERKIT_HOME="$HOME/git/brokerkit"
-alias api="cd $BROKERKIT_HOME/api"
-alias web="cd $BROKERKIT_HOME/webapp"
 
 touch2() { mkdir -p "$(dirname "$1")" && touch "$1" ; }
